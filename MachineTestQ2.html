@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(Premium\ Vector\ _\ Ecology\ and\ environmental\ concept\,earth\ symbol\ with\ green\ leaves\ around\ cities\ help\ the\ world\ with\ eco-friendly\ ideas\,vector\ illustration.jpeg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: 600px;
+
+
+        }
+
+
+        h2 {
+            font-weight: 1000;
+            font-size:x-large;
+            color: #333;
+        }
+
+        #imm{
+            position: relative;
+            width: 100px;
+            left: 720px;
+            bottom: 80px;
+        }
+
+        .container {
+            max-width: 400px;
+            max-height: 400px;
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            position: relative;
+            bottom: 100px;
+        }
+
+        .input-label label {
+            font-weight: bold;
+            color: green;
+        }
+
+        .input-label input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid green;
+            border-radius: 5px;
+        }
+
+        #result {
+            position: relative;
+            bottom: 120px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-style: italic;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: larger;
+            color: green;
+
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: green;
+            color: whitesmoke;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            bottom: 90px;
+        }
+
+        button:hover {
+            background-color: #52b640;
+        }
+
+        .popup {
+            width: 300px;
+            height: 300px;
+            background: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1);
+            text-align: center;
+            padding: 0 30px 30px;
+            color: #333;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+        }
+
+        .open-popup {
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+
+        }
+
+        .popup img {
+            position: relative;
+            left: 670px;
+            bottom: 130px;
+            width: 100px;
+            margin-top: 70px;
+            margin-left: -1340px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup h2 {
+            position: relative;
+            bottom: 150px;
+            color: green;
+            font-size: 38px;
+            font-weight: 500;
+            margin: 30px 0 10px;
+        }
+
+        .popup button {
+            position: relative;
+            top: -150px;
+            width: 100%;
+            margin-top: 50px;
+            padding: 10px 0;
+            background: green;
+            color: #fff;
+            border: 0;
+            outline: none;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        .popup button:hover {
+            background-color: #52b640;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 style="color: green;">Electricity Bill Calculator</h2>
+        <img id="imm" src="gg.jpg.jpeg">
+
+        <div class="input-label">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+
+        <div class="input-label">
+            <label for="units">Units Consumed:</label>
+            <input type="number" id="units" min="0">
+        </div>
+
+        <div class="btn-container">
+            <button onclick="calculateBill(); openPopup();">Calculate Bill</button>
+        </div>
+        <div class="popup" id="popup">
+            <img src="Flat Round Check Mark Green Icon, Button_ Tick Symbol Isolated on White Background Stock Vector - Illustration of eps10, background_ 143476687.jpeg">
+            <h2>Thank You</h2>
+            <p id="result"></p>
+            <button type="button" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        function calculateBill() {
+            const name = document.getElementById('name').value;
+            const units = parseFloat(document.getElementById('units').value);
+            const basicUnitPrice = 5;
+            let bill = 0;
+
+            if (units <= 100) {
+                bill = units * basicUnitPrice;
+            } else if (units <= 150) {
+                bill = 100 * basicUnitPrice + (units - 100) * 5;
+            } else if (units <= 200) {
+                bill = 100 * basicUnitPrice + 50 * 5 + (units - 150) * 8;
+            } else {
+                bill = 100 * basicUnitPrice + 50 * 5 + 50 * 8 + (units - 200) * 10;
+            }
+
+            const resultElement = document.getElementById('result');
+            resultElement.innerText = `Customer: ${name}\nTotal Bill: Rs. ${bill.toFixed(2)}`;
+        }
+
+        function openPopup() {
+            let popup = document.getElementById('popup');
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup() {
+            let popup = document.getElementById('popup');
+            popup.classList.remove("open-popup");
+        }
+    </script>
+</body>
+
+</html>
